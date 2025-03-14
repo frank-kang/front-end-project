@@ -1,20 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
-  <link rel="icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header>
-  </header>
-  <main>
-  </main>
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h2 class="header-banner">Gotta Catch'm All!</h2>
+        <form action="" class="search">
+          <input type="text" class="search-box" placeholder="name of pokemon" />
+          <button>Search</button>
+        </form>
+      </div>
+    </header>
+    <main>
+      <div class="main">
+        <div class="main-screen">
+          <div class="screen-header">
+            <span class="pokemon-name"></span>
+            <span class="pokemon-id"></span>
+          </div>
+          <div class="pokemon-image">
+            <img src="" alt="front image" class="pokemon-front-image" />
+            <img src="" alt="back image" class="pokemon-back-image" />
+          </div>
+          <div class="description">
+            <div class="types">
+              <span class="type-one"></span>
+              <span class="type-two"></span>
+            </div>
+          </div>
+          <div class="stats">
+            <p class="weight">weight: <span class="pokemon-weight"></span></p>
+            <p class="height">height: <span class="pokemon-height"></span></p>
+          </div>
+          <div class="region">
+            <img src="" alt="region" class="pokemon-region" />
+          </div>
+          <div class="sound">
+            <audio src=""></audio>
+            <i class="fa-solid fa-volume"></i>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
