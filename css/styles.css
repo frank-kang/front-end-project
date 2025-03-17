@@ -18,7 +18,13 @@
   color: white;
 }
 
+.main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .main-left {
+  background-color: #e71d23;
   width: 100%;
   height: 100%;
 }
@@ -30,9 +36,12 @@
 }
 
 .main-screen {
+  background-color: aqua;
   border-radius: 15px;
   height: 100%;
   padding: 15px;
+  margin: 15px;
+  margin-top: 15px;
 }
 
 .pokemon-name {
@@ -63,7 +72,7 @@
 
 .stats {
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   color: white;
   display: flex;
   flex-direction: column;
@@ -74,13 +83,22 @@
 
 .types {
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
   color: white;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
   padding: 20px 15px;
+}
+
+.fa-headphones {
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.fa-headphones:hover {
+  cursor: pointer;
 }
 
 .region {
@@ -100,10 +118,10 @@
   background: #e71d23;
   height: 300px;
   padding: 10px;
-  width: 375px;
+  width: 385px;
 }
 
-.right-container__screen {
+.right-container-screen {
   background: #43b0f2;
   border-radius: 15px;
   display: flex;
@@ -135,7 +153,7 @@
   color: white;
 }
 
-.right-container__buttons {
+.right-container-buttons {
   display: flex;
   justify-content: space-around;
   margin-top: 25px;
