@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
     <link rel="icon" href="images/favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/7e065f55e5.js"
+      crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/styles.css" />
@@ -20,33 +23,84 @@
       </div>
     </header>
     <main>
-      <div class="main">
+      <div class="main-left">
         <div class="main-screen">
           <div class="screen-header">
-            <span class="pokemon-name"></span>
-            <span class="pokemon-id"></span>
+            <span class="pokemon-id">#134</span>
+            <span class="pokemon-name">Ditto</span>
           </div>
           <div class="pokemon-image">
-            <img src="" alt="front image" class="pokemon-front-image" />
-            <img src="" alt="back image" class="pokemon-back-image" />
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+              alt="front image"
+              class="pokemon-front-image" />
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png"
+              alt="back image"
+              class="pokemon-back-image" />
           </div>
-          <div class="description">
-            <div class="types">
-              <span class="type-one"></span>
-              <span class="type-two"></span>
+          <div class="desc-stats-wrapper">
+            <div class="description">
+              <div class="types">
+                <p class="type-one">
+                  type1: <span class="pokemon-type1">normal</span>
+                </p>
+                <p class="type-two">
+                  type2: <span class="pokemon-type2">none</span>
+                </p>
+              </div>
+            </div>
+            <div class="stats">
+              <p class="weight">
+                weight: <span class="pokemon-weight">40</span>
+              </p>
+              <p class="height">
+                height: <span class="pokemon-height">11</span>
+              </p>
+            </div>
+            <div class="sound">
+              <audio src="" class="pokemon-cry"></audio>
+              <i class="fa-solid fa-volume"></i>
             </div>
           </div>
-          <div class="stats">
-            <p class="weight">weight: <span class="pokemon-weight"></span></p>
-            <p class="height">height: <span class="pokemon-height"></span></p>
-          </div>
           <div class="region">
-            <img src="" alt="region" class="pokemon-region" />
+            <img
+              src="./images/Sinnoh.png"
+              alt="region"
+              class="pokemon-region" />
           </div>
-          <div class="sound">
-            <audio src=""></audio>
-            <i class="fa-solid fa-volume"></i>
+        </div>
+      </div>
+      <div class="main-right">
+        <div class="right-container">
+          <div class="right-screen">
+            <div class="right-container__screen">
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+              <div class="list-item"></div>
+            </div>
           </div>
+        </div>
+        <div class="right-container__buttons">
+          <div class="left-button">Prev</div>
+          <div class="right-button">Next</div>
         </div>
       </div>
     </main>
