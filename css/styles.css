@@ -36,12 +36,17 @@ body {
   display: flex;
 }
 
-.main-screen {
-  padding: 15px;
+.black {
   border-radius: 15px;
   height: 400px;
   margin: 15px;
   margin-top: 15px;
+  background-color: black;
+}
+
+.main-screen {
+  border-radius: 15px;
+  height: 400px;
   background-color: aqua;
 }
 
@@ -233,8 +238,8 @@ body {
   margin-top: 25px;
 }
 
-.left-button,
-.right-button {
+.prev-button,
+.next-button {
   border: 2px solid black;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
@@ -249,12 +254,12 @@ body {
   width: 100px;
 }
 
-.left-button:hover,
-.right-button:hover {
+.prev-button:hover,
+.next-button:hover {
   background: white;
 }
 
-.left-button:active,
-.right-button:active {
+.prev-button:active,
+.next-button:active {
   box-shadow: inset 0 0 2px 2px rgba(0, 0, 0, 0.3);
 }
