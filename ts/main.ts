@@ -23,7 +23,9 @@ const pokemonHeight = document.querySelector(
 const pokemonCry = document.querySelector('.pokemon-cry') as HTMLAudioElement;
 const pokemonListItems = document.querySelectorAll('.list-item');
 const prevButton = document.querySelector('.prev-button');
-const nextButton = document.querySelector('next-button');
+const nextButton = document.querySelector('.next-button');
+const headPhones = document.querySelector('.fa-headphones');
+
 // Variables
 const types: string[] = [
   'normal',
@@ -45,8 +47,8 @@ const types: string[] = [
   'dark',
   'fairy',
 ];
-let prevUrl = null;
-let nextUrl = null;
+let prevUrl: string | null = null;
+let nextUrl: string | null = null;
 
 // Functions
 function capitalize(name: string): string {
@@ -56,7 +58,14 @@ function capitalize(name: string): string {
   return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 }
 
-async function fetchPokeList(url: any) {
+function resetScreen(): void {
+  mainScreen.classList.remove('hide');
+  for (const type of types) {
+    mainScreen.classList.remove(type);
+  }
+}
+
+async function fetchPokeList(url: any): Promise<void> {
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -84,7 +93,72 @@ async function fetchPokeList(url: any) {
   }
 }
 
-// Listeners
+async function fetchPokemonData(id: number | string): Promise<void> {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error. Status ${response.status}`);
+    }
+    resetScreen();
+    const data = await response.json();
+    const dataTypes = data.types;
+    const dataFirstType = dataTypes[0];
+    const dataSecondType = dataTypes[1];
+    pokemonTypeOne.textContent = capitalize(dataFirstType.type.name);
+    if (dataSecondType) {
+      pokemonTypeTwo.classList.remove('hide');
+      pokemonTypeTwo.textContent = capitalize(dataSecondType.type.name);
+    } else {
+      pokemonTypeTwo.classList.add('hide');
+      pokemonTypeTwo.textContent = '';
+    }
+    mainScreen.classList.add(dataFirstType.type.name);
+    pokemonName.textContent = capitalize(data.name);
+    pokemonId.textContent = '#' + data.id.toString().padStart(3, '0');
+    pokemonWeight.textContent = data.weight;
+    pokemonHeight.textContent = data.height;
+    pokemonFrontImage.src = data.sprites.front_default || '';
+    pokemonBackImage.src = data.sprites.back_default || '';
+    pokemonCry.src = data.cries.latest || '';
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
 
+function leftButtonClick(): void {
+  if (prevUrl) {
+    fetchPokeList(prevUrl);
+  }
+}
+
+function rightButtonClick(): void {
+  if (nextUrl) {
+    fetchPokeList(nextUrl);
+  }
+}
+
+function handleListItemClick(event: any): void {
+  if (!event.target) return;
+
+  const listItem = event.target;
+  if (!listItem.textContent) return;
+
+  const id = listItem.textContent.split('.')[0];
+  fetchPokemonData(id);
+}
+
+function playAudio(): void {
+  pokemonCry.play();
+}
+// Listeners
+headPhones?.addEventListener('click', playAudio);
+if (!prevButton) throw new Error('prevButton does not exist');
+prevButton.addEventListener('click', leftButtonClick);
+if (!nextButton) throw new Error('nextButton does not exist');
+
+nextButton.addEventListener('click', rightButtonClick);
+for (const pokemonListItem of pokemonListItems) {
+  pokemonListItem.addEventListener('click', handleListItemClick);
+}
 // Initial State
 fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
