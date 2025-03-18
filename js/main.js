@@ -1,19 +1,20 @@
 'use strict';
 // DOM
-const mainScreen = document.querySelector('.main-screen');
-const pokemonName = document.querySelector('.pokemon-name');
-const pokemonId = document.querySelector('.pokemon-id');
-const pokemonFrontImage = document.querySelector('.pokemon-front-image');
-const pokemonBackImage = document.querySelector('.pokemon-back-image');
-const pokemonTypeOne = document.querySelector('.pokemon-type1');
-const pokemonTypeTwo = document.querySelector('.pokemon-type2');
-const pokemonWeight = document.querySelector('.pokemon-weight');
-const pokemonHeight = document.querySelector('.pokemon-height');
-const pokemonCry = document.querySelector('.pokemon-cry');
+const $mainScreen = document.querySelector('.main-screen');
+const $pokemonName = document.querySelector('.pokemon-name');
+const $pokemonId = document.querySelector('.pokemon-id');
+const $pokemonFrontImage = document.querySelector('.pokemon-front-image');
+const $pokemonBackImage = document.querySelector('.pokemon-back-image');
+const $pokemonTypeOne = document.querySelector('.pokemon-type1');
+const $pokemonTypeTwo = document.querySelector('.pokemon-type2');
+const $pokemonWeight = document.querySelector('.pokemon-weight');
+const $pokemonHeight = document.querySelector('.pokemon-height');
+const $pokemonCry = document.querySelector('.pokemon-cry');
 const pokemonListItems = document.querySelectorAll('.list-item');
-const prevButton = document.querySelector('.prev-button');
-const nextButton = document.querySelector('.next-button');
-const headPhones = document.querySelector('.fa-headphones');
+const $prevButton = document.querySelector('.prev-button');
+const $nextButton = document.querySelector('.next-button');
+const $headPhones = document.querySelector('.fa-headphones');
+const $searchForm = document.querySelector('#search');
 // Variables
 const types = [
   'normal',
@@ -45,9 +46,9 @@ function capitalize(name) {
   return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 }
 function resetScreen() {
-  mainScreen.classList.remove('hide');
+  $mainScreen.classList.remove('hide');
   for (const type of types) {
-    mainScreen.classList.remove(type);
+    $mainScreen.classList.remove(type);
   }
 }
 async function fetchPokeList(url) {
@@ -87,22 +88,22 @@ async function fetchPokemonData(id) {
     const dataTypes = data.types;
     const dataFirstType = dataTypes[0];
     const dataSecondType = dataTypes[1];
-    pokemonTypeOne.textContent = capitalize(dataFirstType.type.name);
+    $pokemonTypeOne.textContent = capitalize(dataFirstType.type.name);
     if (dataSecondType) {
-      pokemonTypeTwo.classList.remove('hide');
-      pokemonTypeTwo.textContent = capitalize(dataSecondType.type.name);
+      $pokemonTypeTwo.classList.remove('hide');
+      $pokemonTypeTwo.textContent = capitalize(dataSecondType.type.name);
     } else {
-      pokemonTypeTwo.classList.add('hide');
-      pokemonTypeTwo.textContent = '';
+      $pokemonTypeTwo.classList.add('hide');
+      $pokemonTypeTwo.textContent = '';
     }
-    mainScreen.classList.add(dataFirstType.type.name);
-    pokemonName.textContent = capitalize(data.name);
-    pokemonId.textContent = '#' + data.id.toString().padStart(3, '0');
-    pokemonWeight.textContent = data.weight;
-    pokemonHeight.textContent = data.height;
-    pokemonFrontImage.src = data.sprites.front_default || '';
-    pokemonBackImage.src = data.sprites.back_default || '';
-    pokemonCry.src = data.cries.latest || '';
+    $mainScreen.classList.add(dataFirstType.type.name);
+    $pokemonName.textContent = capitalize(data.name);
+    $pokemonId.textContent = '#' + data.id.toString().padStart(3, '0');
+    $pokemonWeight.textContent = data.weight;
+    $pokemonHeight.textContent = data.height;
+    $pokemonFrontImage.src = data.sprites.front_default || '';
+    $pokemonBackImage.src = data.sprites.back_default || '';
+    $pokemonCry.src = data.cries.latest || '';
   } catch (error) {
     console.error('Error:', error);
   }
@@ -125,14 +126,23 @@ function handleListItemClick(event) {
   fetchPokemonData(id);
 }
 function playAudio() {
-  pokemonCry.play();
+  $pokemonCry.play();
+}
+function search(event) {
+  event.preventDefault();
+  const formElements = $searchForm.elements;
+  const formObject = {};
+  formObject.name = formElements.name.value;
+  fetchPokemonData(formObject.name);
+  $searchForm.reset();
 }
 // Listeners
-headPhones?.addEventListener('click', playAudio);
-if (!prevButton) throw new Error('prevButton does not exist');
-prevButton.addEventListener('click', leftButtonClick);
-if (!nextButton) throw new Error('nextButton does not exist');
-nextButton.addEventListener('click', rightButtonClick);
+$searchForm.addEventListener('submit', search);
+$headPhones?.addEventListener('click', playAudio);
+if (!$prevButton) throw new Error('$prevButton does not exist');
+$prevButton.addEventListener('click', leftButtonClick);
+if (!$nextButton) throw new Error('$nextButton does not exist');
+$nextButton.addEventListener('click', rightButtonClick);
 for (const pokemonListItem of pokemonListItems) {
   pokemonListItem.addEventListener('click', handleListItemClick);
 }
