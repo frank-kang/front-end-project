@@ -1,4 +1,3 @@
-// Interfaces
 interface FormElements extends HTMLFormControlsCollection {
   name: HTMLInputElement;
 }
@@ -7,7 +6,6 @@ interface FormObject {
   name?: string;
 }
 
-// DOM
 const $mainScreen = document.querySelector('.main-screen') as Element;
 const $pokemonName = document.querySelector('.pokemon-name') as Element;
 const $pokemonId = document.querySelector('.pokemon-id') as Element;
@@ -30,13 +28,12 @@ const $pokemonHeight = document.querySelector(
   '.pokemon-height',
 ) as HTMLSpanElement;
 const $pokemonCry = document.querySelector('.pokemon-cry') as HTMLAudioElement;
-const pokemonListItems = document.querySelectorAll('.list-item');
+const $pokemonListItems = document.querySelectorAll('.list-item');
 const $prevButton = document.querySelector('.prev-button');
 const $nextButton = document.querySelector('.next-button');
 const $headPhones = document.querySelector('.fa-headphones');
 const $searchForm = document.querySelector('#search') as HTMLFormElement;
 
-// Variables
 const types: string[] = [
   'normal',
   'fighting',
@@ -57,10 +54,10 @@ const types: string[] = [
   'dark',
   'fairy',
 ];
+
 let prevUrl: string | null = null;
 let nextUrl: string | null = null;
 
-// Functions
 function capitalize(name: string): string {
   if (!name) {
     return '';
@@ -85,8 +82,8 @@ async function fetchPokeList(url: any): Promise<void> {
     const { results, previous, next } = data;
     prevUrl = previous;
     nextUrl = next;
-    for (let i = 0; i < pokemonListItems.length; i++) {
-      const pokeListItem = pokemonListItems[i];
+    for (let i = 0; i < $pokemonListItems.length; i++) {
+      const pokeListItem = $pokemonListItems[i];
       const resultData = results[i];
 
       if (resultData) {
@@ -170,7 +167,6 @@ function search(event: Event): void {
   $searchForm.reset();
 }
 
-// Listeners
 $searchForm.addEventListener('submit', search);
 $headPhones?.addEventListener('click', playAudio);
 if (!$prevButton) throw new Error('$prevButton does not exist');
@@ -178,8 +174,8 @@ $prevButton.addEventListener('click', leftButtonClick);
 if (!$nextButton) throw new Error('$nextButton does not exist');
 
 $nextButton.addEventListener('click', rightButtonClick);
-for (const pokemonListItem of pokemonListItems) {
+for (const pokemonListItem of $pokemonListItems) {
   pokemonListItem.addEventListener('click', handleListItemClick);
 }
-// Initial State
+
 fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');

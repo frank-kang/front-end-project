@@ -22,6 +22,11 @@ body {
   color: white;
 }
 
+.search-button:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
 .main-left {
   background-color: #e71d23;
   max-width: 385px;
@@ -185,7 +190,7 @@ body {
 }
 
 .pokemon-region {
-  height: 150px;
+  height: 175px;
   display: block;
   width: 50%;
   margin-left: auto;

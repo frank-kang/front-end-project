@@ -1,5 +1,4 @@
 'use strict';
-// DOM
 const $mainScreen = document.querySelector('.main-screen');
 const $pokemonName = document.querySelector('.pokemon-name');
 const $pokemonId = document.querySelector('.pokemon-id');
@@ -10,12 +9,11 @@ const $pokemonTypeTwo = document.querySelector('.pokemon-type2');
 const $pokemonWeight = document.querySelector('.pokemon-weight');
 const $pokemonHeight = document.querySelector('.pokemon-height');
 const $pokemonCry = document.querySelector('.pokemon-cry');
-const pokemonListItems = document.querySelectorAll('.list-item');
+const $pokemonListItems = document.querySelectorAll('.list-item');
 const $prevButton = document.querySelector('.prev-button');
 const $nextButton = document.querySelector('.next-button');
 const $headPhones = document.querySelector('.fa-headphones');
 const $searchForm = document.querySelector('#search');
-// Variables
 const types = [
   'normal',
   'fighting',
@@ -38,7 +36,6 @@ const types = [
 ];
 let prevUrl = null;
 let nextUrl = null;
-// Functions
 function capitalize(name) {
   if (!name) {
     return '';
@@ -61,8 +58,8 @@ async function fetchPokeList(url) {
     const { results, previous, next } = data;
     prevUrl = previous;
     nextUrl = next;
-    for (let i = 0; i < pokemonListItems.length; i++) {
-      const pokeListItem = pokemonListItems[i];
+    for (let i = 0; i < $pokemonListItems.length; i++) {
+      const pokeListItem = $pokemonListItems[i];
       const resultData = results[i];
       if (resultData) {
         const { name, url } = resultData;
@@ -136,15 +133,13 @@ function search(event) {
   fetchPokemonData(formObject.name);
   $searchForm.reset();
 }
-// Listeners
 $searchForm.addEventListener('submit', search);
 $headPhones?.addEventListener('click', playAudio);
 if (!$prevButton) throw new Error('$prevButton does not exist');
 $prevButton.addEventListener('click', leftButtonClick);
 if (!$nextButton) throw new Error('$nextButton does not exist');
 $nextButton.addEventListener('click', rightButtonClick);
-for (const pokemonListItem of pokemonListItems) {
+for (const pokemonListItem of $pokemonListItems) {
   pokemonListItem.addEventListener('click', handleListItemClick);
 }
-// Initial State
 fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
