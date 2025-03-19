@@ -1,14 +1,14 @@
-.hidden {
+.hide {
   display: none !important;
 }
 
-.container {
-  max-width: 575px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.row {
+.main {
+  max-width: 1000px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+
+  @media (width >= 417) {
+    flex-direction: row;
+  }
 }

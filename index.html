@@ -16,58 +16,64 @@
     <header>
       <div class="header-container">
         <h2 class="header-banner">Gotta Catch'm All!</h2>
-        <form action="" class="search">
-          <input type="text" class="search-box" placeholder="name of pokemon" />
-          <button>Search</button>
+        <form action="" class="search" id="search">
+          <input
+            type="text"
+            class="name"
+            name="name"
+            placeholder="name of pokemon" />
+          <button class="search-button">Search</button>
         </form>
       </div>
     </header>
-    <main>
+    <main class="main">
       <div class="main-left">
-        <div class="main-screen">
-          <div class="screen-header">
-            <span class="pokemon-id">#134</span>
-            <span class="pokemon-name">Ditto</span>
-          </div>
-          <div class="pokemon-image">
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-              alt="front image"
-              class="pokemon-front-image" />
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png"
-              alt="back image"
-              class="pokemon-back-image" />
-          </div>
-          <div class="desc-stats-wrapper">
-            <div class="description">
-              <div class="types">
-                <p class="type-one">
-                  type1: <span class="pokemon-type1">normal</span>
+        <div class="black">
+          <div class="main-screen hide grass">
+            <div class="screen-header">
+              <span class="pokemon-id">#001</span>
+              <span class="pokemon-name">Bulbasaur</span>
+            </div>
+            <div class="pokemon-image">
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                alt="front image"
+                class="pokemon-front-image" />
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
+                alt="back image"
+                class="pokemon-back-image" />
+            </div>
+            <div class="desc-stats-wrapper">
+              <div class="description">
+                <div class="types">
+                  <p class="type-one">
+                    type1: <span class="pokemon-type1">grass</span>
+                  </p>
+                  <p class="type-two">
+                    type2: <span class="pokemon-type2">poison</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats">
+                <p class="weight">
+                  weight: <span class="pokemon-weight">69</span>
                 </p>
-                <p class="type-two">
-                  type2: <span class="pokemon-type2">none</span>
+                <p class="height">
+                  height: <span class="pokemon-height">7</span>
                 </p>
               </div>
+              <div class="sound">
+                <audio src="" class="pokemon-cry"></audio>
+                <i class="fa-solid fa-headphones"></i>
+              </div>
             </div>
-            <div class="stats">
-              <p class="weight">
-                weight: <span class="pokemon-weight">40</span>
-              </p>
-              <p class="height">
-                height: <span class="pokemon-height">11</span>
-              </p>
+            <div class="region">
+              <img
+                src="./images/pokeball.png"
+                alt="pokemon-ball"
+                class="pokemon-region" />
             </div>
-            <div class="sound">
-              <audio src="" class="pokemon-cry"></audio>
-              <i class="fa-solid fa-headphones"></i>
-            </div>
-          </div>
-          <div class="region">
-            <img
-              src="./images/Sinnoh.png"
-              alt="region"
-              class="pokemon-region" />
           </div>
         </div>
       </div>
@@ -97,10 +103,10 @@
               <div class="list-item"></div>
             </div>
           </div>
-        </div>
-        <div class="right-container-buttons">
-          <div class="left-button">Prev</div>
-          <div class="right-button">Next</div>
+          <div class="right-container-buttons">
+            <div class="prev-button">Prev</div>
+            <div class="next-button">Next</div>
+          </div>
         </div>
       </div>
     </main>
